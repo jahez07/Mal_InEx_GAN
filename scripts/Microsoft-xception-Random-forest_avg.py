@@ -36,6 +36,8 @@ os.chdir(imagedir)  # the parent folder with sub-folders
 
 # Get number of samples per family
 list_fams = sorted(os.listdir(os.getcwd()), key=str.lower)  # vector of strings with family names
+list_fams = [item for item in list_fams if item != '.DS_Store'] # 
+print(list_fams)
 no_imgs = []  # No. of samples per family
 for i in range(len(list_fams)):
     os.chdir(list_fams[i])
