@@ -97,13 +97,13 @@ feature_extractor=base_model.predict(images_train)
 train_features = feature_extractor.reshape(feature_extractor.shape[0], -1)
 
 
-svm_model = RandomForestClassifier()
-svm_model.fit(train_features, labels_train)
+rf_model = RandomForestClassifier()
+rf_model.fit(train_features, labels_train)
 
 test_feature = base_model.predict(images_test)
 test_features = test_feature.reshape(test_feature.shape[0], -1)
 
-prediction_svm = svm_model.predict(test_features)
+prediction_svm = rf_model.predict(test_features)
 #print(prediction_svm)
 prediction_svm = le.inverse_transform(prediction_svm)
 #print(prediction_svm)
