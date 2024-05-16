@@ -131,13 +131,14 @@ execution_time = end_time - start_time
 predictions = rf_model.predict(train_features)
 predictions = le.inverse_transform(predictions)
 
+# Path to SelectedData Directory
 path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData")
 count = 0
 folders = list_fams
 
 for i in range(len(predictions)):
     pred_class_index = predictions[i]
-    pred_class = pred_class = list_fams[int(pred_class_index)]
+    pred_class = pred_class = list_fams[int(pred_class_index)] # Class name
     
     for j, folder in enumerate(folders):
       if pred_class == folder:
