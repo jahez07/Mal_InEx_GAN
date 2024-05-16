@@ -147,7 +147,7 @@ for i in range(len(predictions)):
         if not os.path.exists(dir_path): # Checking for existence of directory
             os.makedirs(dir_path) # Creating Directory 
         img = Image.fromarray(images_train[i],'RGB') # Converting numpy.ndarray into RGB image
-        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png")
+        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png") # Saving the converted image into proper folder
         count += 1
 print(count)
 
