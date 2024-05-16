@@ -155,7 +155,7 @@ print(count)
 
 print("Execution time:", execution_time, "seconds")
 
-print("Accuracy SVM= ", metrics.accuracy_score(labels_test, prediction_svm))
+print("Accuracy SVM= ", metrics.accuracy_score(labels_test, prediction_rf))
 
 print(classification_report(labels_test, prediction_svm))
 
