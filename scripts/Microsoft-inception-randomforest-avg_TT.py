@@ -1,3 +1,5 @@
+#              N E C E S S A R Y  P A C K A G E S
+
 import numpy as np
 np.random.seed(1)
 
@@ -53,6 +55,8 @@ for i in no_imgs:
     label += 1
 num_classes = label
 
+#              P R O C E S S I N G  I M A G E S
+
 # Compute the features
 width, height,channels = (128,128,3)
 X = np.zeros((num_samples, width, height, channels))
@@ -80,20 +84,32 @@ labels = np.array(y)
 #print(images)
 #print(labels)
 
+#              E N C O D E R  &  S P L I T
+
 le = preprocessing.LabelEncoder()
 le.fit(labels)
 labels_encoded = le.transform(labels)
 unique_labels_encoded = np.unique(labels_encoded)
 
+# Splitting to train & test
 images_train, images_test, labels_train, labels_test = train_test_split(images, labels_encoded, test_size=0.20, random_state=42)
 
+# One-hot encoding
 y_train_one_hot = to_categorical(labels_train)
 y_test_one_hot = to_categorical(labels_test)
+
 image_shape = (128,128, 3)
+
+# Assigning the base model
 base_model = InceptionV3(weights='imagenet', input_shape=image_shape, include_top=False, pooling='avg')
 start_time = time.time()
 
-feature_extractor=base_model.predict(images_train)
+#              F E A T U R E  E X T R A C T I O N
+
+# Creating a feature extractor using the base model
+feature_extractor = base_model.predict(images_train)
+
+# Extracting features of the train images using the base model (InceptionV3)
 train_features = feature_extractor.reshape(feature_extractor.shape[0], -1)
 
 
@@ -103,12 +119,14 @@ rf_model.fit(train_features, labels_train)
 test_feature = base_model.predict(images_test)
 test_features = test_feature.reshape(test_feature.shape[0], -1)
 
-prediction_svm = rf_model.predict(test_features)
+prediction_rf = rf_model.predict(test_features)
 #print(prediction_svm)
-prediction_svm = le.inverse_transform(prediction_svm)
+prediction_rf = le.inverse_transform(prediction_rf)
 #print(prediction_svm)
 end_time = time.time()
 execution_time = end_time - start_time
+
+#              E X E C U T I O N  R E S U L T S
 
 print("Execution time:", execution_time, "seconds")
 
