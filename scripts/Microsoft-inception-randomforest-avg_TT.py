@@ -157,38 +157,38 @@ print("Execution time:", execution_time, "seconds")
 
 print("Accuracy SVM= ", metrics.accuracy_score(labels_test, prediction_rf))
 
-print(classification_report(labels_test, prediction_svm))
+print(classification_report(labels_test, prediction_rf))
 
 
-f1_micro = f1_score(labels_test, prediction_svm, average='micro')
+f1_micro = f1_score(labels_test, prediction_rf, average='micro')
 print("Micro-Averaged F1 Score:", f1_micro)
 
-f1_macro = f1_score(labels_test, prediction_svm, average='macro')
+f1_macro = f1_score(labels_test, prediction_rf, average='macro')
 print("Macro-Averaged F1 Score:", f1_macro)
 
-precision_micro = precision_score(labels_test, prediction_svm, average='micro')
+precision_micro = precision_score(labels_test, prediction_rf, average='micro')
 print("Micro-Averaged Precision:", precision_micro)
 
-precision_macro = precision_score(labels_test, prediction_svm, average='macro')
+precision_macro = precision_score(labels_test, prediction_rf, average='macro')
 print("Macro-Averaged Precision:", precision_macro)
 
-recall_micro = recall_score(labels_test, prediction_svm, average='micro')
+recall_micro = recall_score(labels_test, prediction_rf, average='micro')
 print("Micro-Averaged Recall:", recall_micro)
 
-recall_macro = recall_score(labels_test, prediction_svm, average='macro')
+recall_macro = recall_score(labels_test, prediction_rf, average='macro')
 print("Macro-Averaged Recall:", recall_macro)
 
 csv_data = [
     ["Metric", "Value"],
     ["Execution Time (seconds)", execution_time],
-    ["Accuracy SVM", metrics.accuracy_score(labels_test, prediction_svm)],
+    ["Accuracy SVM", metrics.accuracy_score(labels_test, prediction_rf)],
     ["Micro-Averaged F1 Score", f1_micro],
     ["Macro-Averaged F1 Score", f1_macro],
     ["Micro-Averaged Precision", precision_micro],
     ["Macro-Averaged Precision", precision_macro],
     ["Micro-Averaged Recall", recall_micro],
     ["Macro-Averaged Recall", recall_macro],
-    [classification_report(labels_test, prediction_svm)]
+    [classification_report(labels_test, prediction_rf)]
 
 ]
 with open('INCEP-rf-avg.csv', 'w', newline='') as csvfile:
@@ -196,7 +196,7 @@ with open('INCEP-rf-avg.csv', 'w', newline='') as csvfile:
     csv_writer.writerows(csv_data)
 
 print("Plotting the confusion matrix")
-cm = confusion_matrix(labels_test, prediction_svm)
+cm = confusion_matrix(labels_test, prediction_rf)
 cm = cm.T  # since rows and cols are interchangeable
 # Compute confusion matrix with normalized values between 0 and 1
 cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
