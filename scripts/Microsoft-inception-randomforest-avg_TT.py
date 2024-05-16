@@ -144,9 +144,9 @@ for i in range(len(predictions)):
     for j, folder in enumerate(folders):
       if pred_class == folder:
         dir_path = os.path.join(path, pred_class)
-        if not os.path.exists(dir_path):
-            os.makedirs(dir_path)
-        img = Image.fromarray(images_train[i],'RGB')
+        if not os.path.exists(dir_path): # Checking for existence of directory
+            os.makedirs(dir_path) # Creating Directory 
+        img = Image.fromarray(images_train[i],'RGB') # Converting 
         img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png")
         count += 1
 print(count)
