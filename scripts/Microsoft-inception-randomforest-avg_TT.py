@@ -18,6 +18,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report,confusion_matrix,accuracy_score,f1_score,precision_score, recall_score
 from sklearn import metrics
 from sklearn.manifold import TSNE
+from PIL import Image
 
 
 import matplotlib.pyplot as plt
