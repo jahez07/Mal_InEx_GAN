@@ -128,6 +128,9 @@ execution_time = end_time - start_time
 
 #              D A T A  S E L E C T I O N  
 
+predictions = rf_model.predict(train_features)
+predictions = le.inverse_transform(predictions)
+
 path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData")
 count = 0
 folders = list_fams
