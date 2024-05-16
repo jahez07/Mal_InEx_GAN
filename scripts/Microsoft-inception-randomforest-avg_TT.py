@@ -126,6 +126,26 @@ prediction_rf = le.inverse_transform(prediction_rf)
 end_time = time.time()
 execution_time = end_time - start_time
 
+#              D A T A  S E L E C T I O N  
+
+path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData")
+count = 0
+folders = list_fams
+
+for i in range(len(predictions)):
+    pred_class_index = predictions[i]
+    pred_class = pred_class = list_fams[int(pred_class_index)]
+    
+    for j, folder in enumerate(folders):
+      if pred_class == folder:
+        dir_path = os.path.join(path, pred_class)
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+        img = Image.fromarray(images_train[i],'RGB')
+        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png")
+        count += 1
+print(count)
+
 #              E X E C U T I O N  R E S U L T S
 
 print("Execution time:", execution_time, "seconds")
