@@ -220,3 +220,27 @@ plt.savefig('Inception_rf_avg_confusion_matrix_tt.png', bbox_inches='tight', for
 
 #             G E N E R A T I V E  A D V E R S R I A L  N E T W O R K 
 
+from keras.models import Sequential
+from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, BatchNormalization
+from keras.layers import Flatten
+from keras.optimizers import Adam
+
+# Discriminator Model 
+# Given an input image, the Discriminator outputs the likelihood of the image being real.
+# Binary classification - true or false (1 or 0). So using sigmoid activation.
+def define_discriminator(in_shape=(128,128,3)):
+	model = Sequential()
+
+	model.add(Conv2D(128, (3,3), strides=(2,2), padding='same', input_shape=in_shape)) #16x16x128
+	model.add(LeakyReLU(alpha=0.2))
+
+	model.add(Conv2D(128, (3,3), strides=(2,2), padding='same')) #8x8x128
+	model.add(LeakyReLU(alpha=0.2))
+
+	model.add(Flatten()) #shape of 8192
+	model.add(Dropout(0.4))
+	model.add(Dense(1, activation='sigmoid')) #shape of 1
+	# compile model
+	opt = Adam(learning_rate=0.0002, beta_1=0.5)
+	model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+	return model
