@@ -276,3 +276,6 @@ def define_generator(latent_dim):
     model.add(Conv2D(3, (3, 3), activation='tanh', padding='same'))  # Output shape: 32x32x3
 
     return model
+
+test_gen = define_generator(100)
+print(test_gen.summary())
