@@ -243,3 +243,40 @@ def define_discriminator(in_shape=(128,128,3)):
 	opt = Adam(learning_rate=0.0002, beta_1=0.5)
 	model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 	return model
+
+# Generator Model
+
+def define_generator(latent_dim):
+    model = Sequential()
+
+    # Initial dense layer
+    n_nodes = 256 * 7 * 7  # 4096 nodes
+    model.add(Dense(n_nodes, input_dim=latent_dim))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(Reshape((7, 7, 256)))  # Reshape to 4x4x256
+
+    # Upsampling blocks
+    model.add(Conv2DTranspose(256, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(128, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(64, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(32, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(32, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    # Output layer
+    model.add(Conv2D(3, (3, 3), activation='tanh', padding='same'))  # Output shape: 32x32x3
+
+    return model
