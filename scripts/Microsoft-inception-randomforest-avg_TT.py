@@ -146,6 +146,8 @@ for i in range(len(predictions)):
     
     for j, folder in enumerate(folders):
       if pred_class == list_fams[int(labels_train)]:
+        x_train.append(images_train[i])
+        y_train.append(folder)
         dir_path = os.path.join(path, pred_class) 
         if not os.path.exists(dir_path): # Checking for existence of a directory
             os.makedirs(dir_path) # Creating directory
