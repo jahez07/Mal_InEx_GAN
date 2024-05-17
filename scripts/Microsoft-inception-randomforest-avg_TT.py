@@ -148,7 +148,7 @@ for i in range(len(predictions)):
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
         img = array_to_img(images_train[i])
-        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png")
+        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png") # Saving the converted image
         count += 1
 print(count)
 
