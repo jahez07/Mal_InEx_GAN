@@ -134,7 +134,7 @@ predictions = le.inverse_transform(predictions)
 
 # Path to SelectedData Directory
 from keras.preprocessing.image import array_to_img
-path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData")
+path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData") # Path to selectedData directory
 count = 0
 folders = list_fams
 
