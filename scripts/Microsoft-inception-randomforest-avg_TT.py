@@ -143,7 +143,7 @@ for i in range(len(predictions)):
     pred_class = list_fams[int(pred_class_index)] # Getting the class name
     
     for j, folder in enumerate(folders):
-      if pred_class == folder:
+      if pred_class == list_fams[int(labels_train)]:
         dir_path = os.path.join(path, pred_class) 
         if not os.path.exists(dir_path): # Checking for existence of a directory
             os.makedirs(dir_path) # Creating directory
