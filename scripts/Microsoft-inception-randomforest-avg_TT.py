@@ -250,10 +250,10 @@ def define_generator(latent_dim):
     model = Sequential()
 
     # Initial dense layer
-    n_nodes = 256 * 7 * 7  # 4096 nodes
+    n_nodes = 256 * 8 * 8  # 4096 nodes
     model.add(Dense(n_nodes, input_dim=latent_dim))
     model.add(LeakyReLU(alpha=0.2))
-    model.add(Reshape((7, 7, 256)))  # Reshape to 4x4x256
+    model.add(Reshape((8, 8, 256)))  # Reshape to 4x4x256
 
     # Upsampling blocks
     model.add(Conv2DTranspose(256, (4, 4), strides=(2, 2), padding='same'))
@@ -265,10 +265,6 @@ def define_generator(latent_dim):
     model.add(BatchNormalization())
 
     model.add(Conv2DTranspose(64, (4, 4), strides=(2, 2), padding='same'))
-    model.add(LeakyReLU(alpha=0.2))
-    model.add(BatchNormalization())
-
-    model.add(Conv2DTranspose(32, (4, 4), strides=(2, 2), padding='same'))
     model.add(LeakyReLU(alpha=0.2))
     model.add(BatchNormalization())
 
