@@ -279,3 +279,23 @@ def define_generator(latent_dim):
 
 test_gen = define_generator(100)
 print(test_gen.summary())
+
+# Define the combined generator and discriminator model, for updating the generator
+# Discriminator is trained separately so here only generator will be trained by keeping
+# the discriminator constant.
+
+def define_gan(generator, discriminator):
+
+  # Discriminator is trained separately. So set to not trainable.
+  discriminator.trainable = False
+
+  # Connect generator and discriminator
+  model = Sequential()
+  model.add(generator)
+  model.add(discriminator)
+
+  # compile model
+  opt = Adam(learning_rate=0.0002, beta_1=0.5)
+  model.compile(loss='binary_crossentropy', optimizer=opt)
+
+  return model
