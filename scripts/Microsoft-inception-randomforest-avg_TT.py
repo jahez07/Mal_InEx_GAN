@@ -140,7 +140,7 @@ folders = list_fams
 
 for i in range(len(predictions)):
     pred_class_index = predictions[i]
-    pred_class = pred_class = list_fams[int(pred_class_index)] # Getting the class name
+    pred_class = list_fams[int(pred_class_index)] # Getting the class name
     
     for j, folder in enumerate(folders):
       if pred_class == folder:
