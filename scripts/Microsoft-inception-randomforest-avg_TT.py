@@ -218,4 +218,5 @@ plt.colorbar()
 plt.savefig('Inception_rf_avg_confusion_matrix_tt.png', bbox_inches='tight', format='png')
 
 
+#             G E N E R A T I V E  A D V E R S R I A L  N E T W O R K 
 
