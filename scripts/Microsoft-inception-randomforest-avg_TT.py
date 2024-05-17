@@ -152,7 +152,7 @@ for i in range(len(predictions)):
         count += 1
 print(count)
 
-#              E X E C U T I O N  R E S U L T S
+#              E X E C U T I O N  R E S U L T S  B E F O R E  A T T A C K
 
 print("Execution time:", execution_time, "seconds")
 
