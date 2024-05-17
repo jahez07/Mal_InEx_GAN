@@ -133,21 +133,22 @@ predictions = rf_model.predict(train_features)
 predictions = le.inverse_transform(predictions)
 
 # Path to SelectedData Directory
+from keras.preprocessing.image import array_to_img
 path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData")
 count = 0
 folders = list_fams
 
 for i in range(len(predictions)):
     pred_class_index = predictions[i]
-    pred_class = pred_class = list_fams[int(pred_class_index)] # Class name
+    pred_class = pred_class = list_fams[int(pred_class_index)]
     
     for j, folder in enumerate(folders):
       if pred_class == folder:
         dir_path = os.path.join(path, pred_class)
-        if not os.path.exists(dir_path): # Checking for existence of directory
-            os.makedirs(dir_path) # Creating Directory 
-        img = Image.fromarray(images_train[i],'RGB') # Converting numpy.ndarray into RGB image
-        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png") # Saving the converted image into proper folder
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+        img = array_to_img(images_train[i])
+        img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png")
         count += 1
 print(count)
 
