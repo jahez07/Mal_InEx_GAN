@@ -303,3 +303,26 @@ def define_gan(generator, discriminator):
   model.compile(loss='binary_crossentropy', optimizer=opt)
 
   return model
+
+X_train = np.zeros((count, width, height, channels)) 
+i = 0
+for img in x_train:
+  X_train[i] = img
+  i += 1
+
+# Converting list to array
+Y_train = np.array(y_train)
+
+# load cifar training images
+def load_real_samples():
+
+  trainX = X_train
+
+  # cConvert to float and scale.
+  X = trainX.astype('float32')
+
+  # scale from [0,255] to [-1,1]
+  X = (X - 127.5) / 127.5
+  #Generator uses tanh activation so rescale
+  #original images to -1 to 1 to match the output of generator.
+  return X
