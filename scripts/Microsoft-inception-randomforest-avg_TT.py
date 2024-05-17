@@ -221,8 +221,7 @@ plt.savefig('Inception_rf_avg_confusion_matrix_tt.png', bbox_inches='tight', for
 #             G E N E R A T I V E  A D V E R S R I A L  N E T W O R K 
 
 from keras.models import Sequential
-from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, BatchNormalization
-from keras.layers import Flatten
+from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, BatchNormalization, Flatten, Dropout
 from keras.optimizers import Adam
 
 # Discriminator Model 
