@@ -137,6 +137,8 @@ from keras.preprocessing.image import array_to_img
 path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData") # Path to selectedData directory
 count = 0
 folders = list_fams
+x_train = []
+y_train = []
 
 for i in range(len(predictions)):
     pred_class_index = predictions[i]
