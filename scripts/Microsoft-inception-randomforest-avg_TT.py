@@ -145,9 +145,9 @@ for i in range(len(predictions)):
     for j, folder in enumerate(folders):
       if pred_class == folder:
         dir_path = os.path.join(path, pred_class)
-        if not os.path.exists(dir_path):
-            os.makedirs(dir_path)
-        img = array_to_img(images_train[i])
+        if not os.path.exists(dir_path): # Checking for existence of a directory
+            os.makedirs(dir_path) # Creating directory
+        img = array_to_img(images_train[i]) # Converting numpy array to image
         img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png") # Saving the converted image
         count += 1
 print(count)
