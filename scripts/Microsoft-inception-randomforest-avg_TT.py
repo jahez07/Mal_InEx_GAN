@@ -315,9 +315,7 @@ Y_train = np.array(y_train)
 
 # load cifar training images
 def load_real_samples():
-
   trainX = X_train
-
   # cConvert to float and scale.
   X = trainX.astype('float32')
 
