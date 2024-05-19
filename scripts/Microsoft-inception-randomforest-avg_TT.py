@@ -10,7 +10,7 @@ import tensorflow as tf
 import pandas as pd
 import time
 import csv
-from numpy.random import randint
+from numpy.random import randint, randn
 from numpy import ones
 
 from sklearn.ensemble import RandomForestClassifier
@@ -343,6 +343,20 @@ def generate_real_samples(dataset, n_samples):
   # Label=1 indicating they are real
 	y = ones((n_samples, 1))
 	return X, y
+
+# Latent Points Generation
+
+# Generate n_samples number of latent vectors as input for the generator
+
+def generate_latent_points(latent_dim, n_samples):
+
+  # generate points in the latent space
+	x_input = randn(latent_dim * n_samples)
+
+  # reshape into a batch of inputs for the network
+	x_input = x_input.reshape(n_samples, latent_dim)
+	return x_input
+
 
 # Train the generator and discriminator
 # We loop through a number of epochs to train our Discriminator by first selecting
