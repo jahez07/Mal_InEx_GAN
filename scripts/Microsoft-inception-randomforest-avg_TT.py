@@ -10,6 +10,7 @@ import tensorflow as tf
 import pandas as pd
 import time
 import csv
+from numpy.random import randint
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import StratifiedKFold 
@@ -323,3 +324,21 @@ def load_real_samples():
   #Generator uses tanh activation so rescale
   #original images to -1 to 1 to match the output of generator.
   return X
+
+# Pick a batch of random real samples to train the GAN
+# In fact, we will train the GAN on a half batch of real images and another
+# half batch of fake images.
+# For each real image we assign a label 1 and for fake we assign label 0.
+
+def generate_real_samples(dataset, n_samples):
+
+  # Choose random images
+	ix = randint(0, dataset.shape[0], n_samples)
+
+  # Select the random images and assign it to X
+	X = dataset[ix]
+
+  # Generate class labels and assign to y
+  # Label=1 indicating they are real
+	y = ones((n_samples, 1))
+	return X, y
