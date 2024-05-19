@@ -25,6 +25,7 @@ The Bellow image is the depiction of classification report before the adversaria
 <br/>
 Classification Report 
 <br/>
+<br/>
 <img src="results/CR_BeforeAttack.png" alt="ClassificationReport" width="512">
 <br/>
 <br/>
