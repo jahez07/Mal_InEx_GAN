@@ -30,5 +30,6 @@ Classification Report
 <br/>
 Performance Metrics
 <br/>
+<br/>
 <img src="results/result.png" alt="ClassificationReport" width="512">
 <br/>
