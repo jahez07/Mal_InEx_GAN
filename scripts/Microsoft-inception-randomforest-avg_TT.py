@@ -11,7 +11,7 @@ import pandas as pd
 import time
 import csv
 from numpy.random import randint, randn
-from numpy import ones
+from numpy import ones, zeros
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import StratifiedKFold 
