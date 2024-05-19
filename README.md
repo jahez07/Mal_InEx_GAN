@@ -18,3 +18,6 @@ Show
 6. If we augment the dataset using GAN generated examples, performance improves </br>
 * some % of samples (traning samples) `->` GAN `->` new instance `->` extend the dataset `->` model1 & model2 </br>
 * test set (old) `->` present to model1 & model2 `->` we observe that test set samples which were previously misclassified are also detected
+
+B E F O R E  A T T A C K
+![alt text](CR_BeforeAttack.png)
