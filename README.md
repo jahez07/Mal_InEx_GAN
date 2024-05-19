@@ -20,4 +20,6 @@ Show
 * test set (old) `->` present to model1 & model2 `->` we observe that test set samples which were previously misclassified are also detected
 
 B E F O R E  A T T A C K
-![alt text](CR_BeforeAttack.png)
+
+The Bellow image is the depiction of classification report before the adversarial attack. <br/>
+<img src="CR_BeforeAttack.png" alt="ClassificationReport" width="242">
