@@ -22,4 +22,4 @@ Show
 B E F O R E  A T T A C K
 
 The Bellow image is the depiction of classification report before the adversarial attack. <br/>
-<img src="CR_BeforeAttack.png" alt="ClassificationReport" width="242">
+<img src="CR_BeforeAttack.png" alt="ClassificationReport" width="512">
