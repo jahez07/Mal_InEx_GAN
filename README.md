@@ -19,7 +19,7 @@ Show
 * some % of samples (traning samples) `->` GAN `->` new instance `->` extend the dataset `->` model1 & model2 </br>
 * test set (old) `->` present to model1 & model2 `->` we observe that test set samples which were previously misclassified are also detected
 
-B E F O R E <tb/> A T T A C K
+B E F O R E <th/> A T T A C K
 
 The Bellow image is the depiction of classification report before the adversarial attack. <br/>
 <img src="CR_BeforeAttack.png" alt="ClassificationReport" width="512">
