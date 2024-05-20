@@ -21,6 +21,7 @@ from sklearn.metrics import classification_report,confusion_matrix,accuracy_scor
 from sklearn import metrics
 from sklearn.manifold import TSNE
 from PIL import Image
+from keras.models import load_model
 
 
 import matplotlib.pyplot as plt
