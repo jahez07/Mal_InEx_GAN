@@ -416,3 +416,10 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
       # Print losses on this batch
       print('Epoch>%d, Batch %d/%d, d1=%.3f, d2=%.3f g=%.3f' %
        (i+1, j+1, bat_per_epo, d_loss_real, d_loss_fake, g_loss))
+
+# save the generator model
+  g_model.save('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GAN[adload]_generator.h5')
+
+
+
+generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GAN[adload]_generator.h5')
