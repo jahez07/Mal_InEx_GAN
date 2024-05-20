@@ -439,3 +439,8 @@ dataset = load_real_samples()
 train(generator, discriminator, gan_model, dataset, latent_dim, n_epochs = 10)
 
 generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GAN[adload]_generator.h5')
+
+#   
+
+noise = np.random.normal(0, 1, (1 * 1, 100))
+gen_imgs = generator.predict(noise)
