@@ -442,5 +442,5 @@ generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GA
 
 #              G E N E R A T I N G  A D V E R S A R I A L  S A M P L E S
 
-noise = np.random.normal(0, 1, (1 * 1, 100))
+noise = np.random.normal(0, 1, (100 * 20, 100))
 gen_imgs = generator.predict(noise)
