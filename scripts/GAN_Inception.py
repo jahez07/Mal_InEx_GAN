@@ -294,14 +294,6 @@ def define_gan(generator, discriminator):
 
   return model
 
-X_train = np.zeros((count, width, height, channels)) 
-i = 0
-for img in x_train:
-  X_train[i] = img
-  i += 1
-
-# Converting list to array
-Y_train = np.array(y_train)
 
 # load cifar training images
 def load_real_samples():
