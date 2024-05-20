@@ -129,7 +129,7 @@ prediction_rf = le.inverse_transform(prediction_rf)
 end_time = time.time()
 execution_time = end_time - start_time
 
-#              D A T A  LOADING  
+#              D A T A  L O A D I N G  
 
 predictions = rf_model.predict(train_features)
 predictions = le.inverse_transform(predictions)
