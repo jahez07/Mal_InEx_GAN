@@ -420,6 +420,22 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
 # save the generator model
   g_model.save('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GAN[adload]_generator.h5')
 
+# size of the latent space
+latent_dim = 100
 
+# create the discriminator
+discriminator = define_discriminator()
+
+# create the generator
+generator = define_generator(latent_dim)
+
+# create the gan
+gan_model = define_gan(generator, discriminator)
+
+# load image data
+dataset = load_real_samples()
+
+# train model
+train(generator, discriminator, gan_model, dataset, latent_dim, n_epochs = 10)
 
 generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GAN[adload]_generator.h5')
