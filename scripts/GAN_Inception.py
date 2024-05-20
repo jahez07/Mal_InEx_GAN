@@ -444,3 +444,27 @@ generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/GA
 
 noise = np.random.normal(0, 1, (100 * 20, 100))
 gen_imgs = generator.predict(noise)
+
+
+# Generated Samples --> Model 1 --> Predictions
+# Creating a feature extractor using the base model
+feature_extractor = base_model.predict(gen_imgs)
+
+# Extracting features of the train images using the base model (InceptionV3)
+train_features = feature_extractor.reshape(feature_extractor.shape[0], -1)
+
+# Assigning the classifier
+rf_model = RandomForestClassifier()
+# Training the classifier
+rf_model.fit(train_features, labels_train)
+
+# Extracting features of the test images using the base model (InceptionV3)
+test_feature = base_model.predict(images_test)
+test_features = test_feature.reshape(test_feature.shape[0], -1)
+
+prediction_rf = rf_model.predict(test_features)
+#print(prediction_svm)
+prediction_rf = le.inverse_transform(prediction_rf)
+#print(prediction_svm)
+end_time = time.time()
+execution_time = end_time - start_time
