@@ -446,6 +446,13 @@ noise = np.random.normal(0, 1, (100 * 20, 100))
 gen_imgs = generator.predict(noise)
 
 
+features = base_model.predict(gen_imgs)
+features = features.reshape(features.shape[0], -1)
+
+prediction = rf_model.predict(features)
+
+
+
 # Generated Samples --> Model 1 --> Predictions
 # Creating a feature extractor using the base model
 feature_extractor = base_model.predict(gen_imgs)
