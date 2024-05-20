@@ -131,31 +131,20 @@ execution_time = end_time - start_time
 
 #              D A T A  L O A D I N G  
 
-predictions = rf_model.predict(train_features)
-predictions = le.inverse_transform(predictions)
 
-# Path to SelectedData Directory
-from keras.preprocessing.image import array_to_img
-path = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData") # Path to selectedData directory
-count = 0
-folders = list_fams
-x_train = []
-y_train = []
+# path to one family
+data = os.path.join("/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData/adload")
+images = []
+for file_ in os.listdir(data):
+  img_path = os.path.join(data, file_)
+  with Image.open(img_path) as img:
+    img = img.resize((224,224))
+    img_array = np.array(img)
+    img_array = img_array[:, :, :3]
+    images.append(img_array)
 
-for i in range(len(predictions)):
-    pred_class_index = predictions[i]
-    pred_class = list_fams[int(pred_class_index)] # Getting the class name
-    
-    if pred_class == list_fams[int(labels_train)]:
-      x_train.append(images_train[i])
-      y_train.append(pred_class)
-      dir_path = os.path.join(path, pred_class) 
-      if not os.path.exists(dir_path): # Checking for existence of a directory
-          os.makedirs(dir_path) # Creating directory
-      img = array_to_img(images_train[i]) # Converting numpy array to image
-      img.save(f"{path}/{pred_class}/Train({pred_class})_{i}.png") # Saving the converted image
-      count += 1
-print(count)
+# Convert list of images to array
+X_train = np.array(images)
 
 #              E X E C U T I O N  R E S U L T S  B E F O R E  A T T A C K
 
