@@ -451,11 +451,5 @@ features = features.reshape(features.shape[0], -1)
 
 prediction = rf_model.predict(features)
 
-count = 0
-for ele in prediction:
-  if ele == 1:
-    continue
-  else:
-    count += 1
-print(count)
+
 
