@@ -1,4 +1,6 @@
 import os
+import numpy as np
+import glob
 
 imagedir = "/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Data"
 
