@@ -3,7 +3,7 @@ import numpy as np
 import glob
 
 
-#              E X T R A C T I N G  L A B E L S
+#              E X T R A C T I N G  &  I N I T I A L I Z I N G  L A B E L S
 
 # path to selected data directory
 imagedir = "/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData"
