@@ -2,9 +2,13 @@ import os
 import numpy as np
 import glob
 
-imagedir = "/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Data"
 
-cur_dir = os.getcwd()
+#              E X T R A C T I N G  L A B E L S
+
+# path to selected data directory
+imagedir = "/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData"
+
+cur_dir = os.getcwd() # getting the current directory
 os.chdir(imagedir)  # the parent folder with sub-folders
 
 # Get number of samples per family
