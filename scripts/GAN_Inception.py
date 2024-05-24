@@ -30,7 +30,7 @@ y = np.zeros(num_samples)
 pos = 0
 label = 0
 for i in no_imgs:
-    # Label: 0
+    # Label: 0 Family: adload Number of images: 1050
     print ("Label:%2d\tFamily: %15s\tNumber of images: %d" % (label, list_fams[label], i))
     for j in range(i):
         y[pos] = label
