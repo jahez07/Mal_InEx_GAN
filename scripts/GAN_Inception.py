@@ -25,3 +25,15 @@ for i in range(len(list_fams)):
 # total number of all samples
 num_samples = np.sum(no_imgs)
 
+# Compute the labels
+y = np.zeros(num_samples)
+pos = 0
+label = 0
+for i in no_imgs:
+    # Label: 0
+    print ("Label:%2d\tFamily: %15s\tNumber of images: %d" % (label, list_fams[label], i))
+    for j in range(i):
+        y[pos] = label
+        pos += 1
+    label += 1
+num_classes = label
