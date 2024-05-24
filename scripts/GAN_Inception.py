@@ -463,3 +463,4 @@ data_path = "/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData"
 
 for _class in range(20):
     # loaing each family
+    family_path = os.path.join(data_path, list_fams[_class])
