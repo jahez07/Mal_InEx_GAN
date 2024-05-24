@@ -37,3 +37,5 @@ for i in no_imgs:
         pos += 1
     label += 1
 num_classes = label
+
+#              L O A D I N G  D A T A
