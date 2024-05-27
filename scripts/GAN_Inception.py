@@ -4,6 +4,8 @@ import glob
 from keras.models import Sequential
 from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, BatchNormalization, Flatten, Dropout
 from keras.optimizers import Adam
+from numpy.random import randint, randn
+from numpy import ones, zeros
 
 
 #              E X T R A C T I N G  &  I N I T I A L I Z I N G  L A B E L S
@@ -141,6 +143,23 @@ def load_real_samples():
   #original images to -1 to 1 to match the output of generator.
   return X
 
+# Pick a batch of random real samples to train the GAN
+# In fact, we will train the GAN on a half batch of real images and another
+# half batch of fake images.
+# For each real image we assign a label 1 and for fake we assign label 0.
+
+def generate_real_samples(dataset, n_samples):
+
+  # Choose random images
+	ix = randint(0, dataset.shape[0], n_samples)
+
+  # Select the random images and assign it to X
+	X = dataset[ix]
+
+  # Generate class labels and assign to y
+  # Label=1 indicating they are real
+	y = ones((n_samples, 1))
+	return X, y
 #              G E N E R A T I N G  S A M P L E S
 
 
