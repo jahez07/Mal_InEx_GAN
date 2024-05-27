@@ -160,6 +160,47 @@ def generate_real_samples(dataset, n_samples):
   # Label=1 indicating they are real
 	y = ones((n_samples, 1))
 	return X, y
+
+# Generate n_samples number of latent vectors as input for the generator
+
+def generate_latent_points(latent_dim, n_samples):
+
+  # generate points in the latent space
+	x_input = randn(latent_dim * n_samples)
+
+  # reshape into a batch of inputs for the network
+	x_input = x_input.reshape(n_samples, latent_dim)
+	return x_input
+
+# Generate n_samples number of latent vectors as input for the generator
+
+def generate_latent_points(latent_dim, n_samples):
+
+  # generate points in the latent space
+	x_input = randn(latent_dim * n_samples)
+
+  # reshape into a batch of inputs for the network
+	x_input = x_input.reshape(n_samples, latent_dim)
+	return x_input
+
+# Use the generator to generate n fake examples, with class labels
+# Supply the generator, latent_dim and number of samples as input.
+# Use the above latent point generator to generate latent points.
+
+def generate_fake_samples(generator, latent_dim, n_samples):
+
+  # generate points in latent space
+	x_input = generate_latent_points(latent_dim, n_samples)
+
+  # predict using generator to generate fake samples.
+	X = generator.predict(x_input)
+
+  # Class labels will be 0 as these samples are fake.
+	y = zeros((n_samples, 1))  #Label=0 indicating they are fake
+	return X, y
+
+
+
 #              G E N E R A T I N G  S A M P L E S
 
 
