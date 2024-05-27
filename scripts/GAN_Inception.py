@@ -47,6 +47,100 @@ num_classes = label
 
 #              G A N  (Generative Adversarial Network)
 
+#              Discriminator Model
+
+# Given an input image, the Discriminator outputs the likelihood of the image being real.
+# Binary classification - true or false (1 or 0). So using sigmoid activation.
+def define_discriminator(in_shape=(128,128,3)):
+	model = Sequential()
+
+	model.add(Conv2D(128, (3,3), strides=(2,2), padding='same', input_shape=in_shape)) #16x16x128
+	model.add(LeakyReLU(alpha=0.2))
+
+	model.add(Conv2D(128, (3,3), strides=(2,2), padding='same')) #8x8x128
+	model.add(LeakyReLU(alpha=0.2))
+
+	model.add(Flatten()) #shape of 8192
+	model.add(Dropout(0.4))
+	model.add(Dense(1, activation='sigmoid')) #shape of 1
+	# compile model
+	opt = Adam(learning_rate=0.0002, beta_1=0.5)
+	model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+	return model
+
+test_discr = define_discriminator()
+print(test_discr.summary())
+
+#              Generator Model
+
+def define_generator(latent_dim):
+    model = Sequential()
+
+    # Initial dense layer
+    n_nodes = 256 * 8 * 8  # 4096 nodes
+    model.add(Dense(n_nodes, input_dim=latent_dim))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(Reshape((8, 8, 256)))  # Reshape to 4x4x256
+
+    # Upsampling blocks
+    model.add(Conv2DTranspose(256, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(128, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(64, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    model.add(Conv2DTranspose(32, (4, 4), strides=(2, 2), padding='same'))
+    model.add(LeakyReLU(alpha=0.2))
+    model.add(BatchNormalization())
+
+    # Output layer
+    model.add(Conv2D(3, (3, 3), activation='tanh', padding='same'))  # Output shape: 32x32x3
+
+    return model
+
+test_gen = define_generator(100)
+print(test_gen.summary())
+
+# Define the combined generator and discriminator model, for updating the generator
+# Discriminator is trained separately so here only generator will be trained by keeping
+# the discriminator constant.
+
+def define_gan(generator, discriminator):
+
+  # Discriminator is trained separately. So set to not trainable.
+  discriminator.trainable = False
+
+  # Connect generator and discriminator
+  model = Sequential()
+  model.add(generator)
+  model.add(discriminator)
+
+  # compile model
+  opt = Adam(learning_rate=0.0002, beta_1=0.5)
+  model.compile(loss='binary_crossentropy', optimizer=opt)
+
+  return model
+
+# load cifar training images
+def load_real_samples():
+
+  trainX = X_train
+
+  # cConvert to float and scale.
+  X = trainX.astype('float32')
+
+  # scale from [0,255] to [-1,1]
+  X = (X - 127.5) / 127.5
+  #Generator uses tanh activation so rescale
+  #original images to -1 to 1 to match the output of generator.
+  return X
+
 #              G E N E R A T I N G  S A M P L E S
 
 
