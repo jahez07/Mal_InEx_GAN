@@ -1,5 +1,6 @@
 import os
 import glob
+import pickle
 import numpy as np
 from numpy import ones, zeros
 import matplotlib.pyplot as plt
@@ -73,10 +74,14 @@ print("shape:",X.shape)
 #print(y)
 images = np.array(X)
 labels = np.array(y)
-#print(images)
-#print(labels)
+
+# Loading each family
+
 
 #              L O A D I N G  M O D E L
+
+with open('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/rf_model.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
 
 #              G A N  (Generative Adversarial Network)
 
