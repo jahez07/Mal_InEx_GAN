@@ -334,14 +334,3 @@ for i in range(len(gen_imgs)):
       # Save the image
       img.save(f'Gen_adaload_{i}.png')
   
-
-# Create a figure with adjusted size
-plt.figure(figsize=(gen_imgs[i].shape[1] / 100, gen_imgs[i].shape[0] / 100), dpi=100)
-# Plot the image without padding
-plt.imshow(gen_imgs[i])
-plt.axis('off')
-# Save the image without extra white space
-plt.savefig(f"/Sh_Gatak_Sample.png", bbox_inches='tight', pad_inches=0)
-# Close the plot
-plt.close()
-
