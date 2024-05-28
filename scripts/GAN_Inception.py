@@ -279,6 +279,6 @@ train(generator, discriminator, gan_model, dataset, latent_dim, n_epochs = 800)
 # Loading the generator 
 generator = load_model('/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
 
-# Generating images
+# Generating images by passing noise into the trained Generator
 noise = np.random.normal(0, 1, (1 * 1, 100))
 gen_imgs = generator.predict(noise)
