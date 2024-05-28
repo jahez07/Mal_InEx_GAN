@@ -282,3 +282,14 @@ generator = load_model('/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
 # Generating images by passing noise into the trained Generator
 noise = np.random.normal(0, 1, (1 * 1, 100))
 gen_imgs = generator.predict(noise)
+
+
+# Create a figure with adjusted size
+plt.figure(figsize=(gen_imgs[i].shape[1] / 100, gen_imgs[i].shape[0] / 100), dpi=100)
+# Plot the image without padding
+plt.imshow(gen_imgs[i])
+plt.axis('off')
+# Save the image without extra white space
+plt.savefig(f"/content/drive/MyDrive/Jahez_Vinod_2023/DMD(MainProject)/GAN/Sh_Gatak_Sample.png", bbox_inches='tight', pad_inches=0)
+# Close the plot
+plt.close()
