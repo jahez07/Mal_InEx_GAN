@@ -6,6 +6,7 @@ from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, Bat
 from keras.optimizers import Adam
 from numpy.random import randint, randn
 from numpy import ones, zeros
+from keras.models import load_model
 
 
 #              E X T R A C T I N G  &  I N I T I A L I Z I N G  L A B E L S
@@ -275,4 +276,5 @@ train(generator, discriminator, gan_model, dataset, latent_dim, n_epochs = 800)
 
 #              G E N E R A T I N G  S A M P L E S
 
-
+# Loading the generator 
+generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/DMD(MainProject)/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
