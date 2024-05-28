@@ -129,7 +129,7 @@ def define_gan(generator, discriminator):
 
   return model
 
-# load cifar training images
+# load MalHub training images
 def load_real_samples():
 
   trainX = X_train
