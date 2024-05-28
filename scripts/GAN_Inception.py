@@ -13,7 +13,7 @@ from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, Bat
 #              E X T R A C T I N G  &  I N I T I A L I Z I N G  L A B E L S
 
 # path to selected data directory
-imagedir = "/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/SelectedData"
+imagedir = "/MalHub/SelectedData"
 
 cur_dir = os.getcwd() # getting the current directory
 os.chdir(imagedir)  # the parent folder with sub-folders
@@ -291,6 +291,6 @@ plt.figure(figsize=(gen_imgs[i].shape[1] / 100, gen_imgs[i].shape[0] / 100), dpi
 plt.imshow(gen_imgs[i])
 plt.axis('off')
 # Save the image without extra white space
-plt.savefig(f"/content/drive/MyDrive/Jahez_Vinod_2023/DMD(MainProject)/GAN/Sh_Gatak_Sample.png", bbox_inches='tight', pad_inches=0)
+plt.savefig(f"/Sh_Gatak_Sample.png", bbox_inches='tight', pad_inches=0)
 # Close the plot
 plt.close()
