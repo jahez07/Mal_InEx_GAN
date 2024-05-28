@@ -329,7 +329,10 @@ gen_imgs = generator.predict(noise)
 for i in range(len(gen_imgs)):
   prediction = loaded_model.predict(gen_imgs[i].reshape(1, 128, 128, 3))
   if list_fams[prediction] == "adaload":
-      
+      # Convert numpy array to image
+      img = Image.fromarray((gen_imgs[i] * 255).astype(np.uint8))
+      # Save the image
+      img.save(f'adaload_image_{i}.png')
   
 
 # Create a figure with adjusted size
