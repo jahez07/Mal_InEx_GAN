@@ -328,6 +328,8 @@ gen_imgs = generator.predict(noise)
 # Selecting generated images
 for i in range(len(gen_imgs)):
   prediction = loaded_model.predict(gen_imgs[i].reshape(1, 128, 128, 3))
+  if list_fams[prediction] == "adaload":
+      
   
 
 # Create a figure with adjusted size
