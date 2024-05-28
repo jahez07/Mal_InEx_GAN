@@ -76,6 +76,11 @@ images = np.array(X)
 labels = np.array(y)
 
 # Loading each family
+X_train = []
+for i in range(len(labels)):
+    if labels[i] == 0:
+        X_train.append(images[i])
+X_train = np.array(X_train)
 
 
 #              L O A D I N G  M O D E L
