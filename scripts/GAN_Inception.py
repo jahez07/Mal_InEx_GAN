@@ -294,7 +294,7 @@ def train(g_model, d_model, gan_model, dataset, latent_dim, n_epochs=100, n_batc
       #Gen_Loss.append(g_loss)
 
 # save the generator model
-  with open('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/Generators/GAN_adload_generator.pkl', 'wb') as file:
+  with open('/Generators/GAN_adload_generator.pkl', 'wb') as file:
     pickle.dump(g_model, file)
 
 # size of the latent space
