@@ -277,4 +277,4 @@ train(generator, discriminator, gan_model, dataset, latent_dim, n_epochs = 800)
 #              G E N E R A T I N G  S A M P L E S
 
 # Loading the generator 
-generator = load_model('/content/drive/MyDrive/Jahez_Vinod_2023/DMD(MainProject)/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
+generator = load_model('/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
