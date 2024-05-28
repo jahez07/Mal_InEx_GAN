@@ -7,6 +7,8 @@ from keras.optimizers import Adam
 from keras.models import load_model
 from keras.models import Sequential
 from numpy.random import randint, randn
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.inception_v3 import InceptionV3,preprocess_input
 from keras.layers import Dense, Reshape, LeakyReLU, Conv2DTranspose, Conv2D, BatchNormalization, Flatten, Dropout
 
 
@@ -46,6 +48,33 @@ for i in no_imgs:
 num_classes = label
 
 #              L O A D I N G  D A T A
+
+# Compute the features
+width, height,channels = (128,128,3)
+X = np.zeros((num_samples, width, height, channels))
+cnt = 0
+list_paths = [] # List of image paths
+print("Processing images ...")
+for i in range(len(list_fams)):
+    for img_file in glob.glob(list_fams[i]+'/*.png'):
+        #print("[%d] Processing image: %s" % (cnt, img_file))
+        list_paths.append(os.path.join(os.getcwd(),img_file))
+        img = image.load_img(img_file, target_size=(128,128))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = preprocess_input(x)
+        X[cnt] = x
+        cnt += 1
+print("Images processed: %d" %(cnt))
+
+os.chdir(cur_dir)
+print("shape:",X.shape)
+#print(X)
+#print(y)
+images = np.array(X)
+labels = np.array(y)
+#print(images)
+#print(labels)
 
 #              L O A D I N G  M O D E L
 
@@ -294,3 +323,4 @@ plt.axis('off')
 plt.savefig(f"/Sh_Gatak_Sample.png", bbox_inches='tight', pad_inches=0)
 # Close the plot
 plt.close()
+
