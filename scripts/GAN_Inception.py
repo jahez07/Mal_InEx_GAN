@@ -324,6 +324,9 @@ generator = load_model('/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
 noise = np.random.normal(0, 1, (1 * 1, 100))
 gen_imgs = generator.predict(noise)
 
+for i in range(len(gen_imgs)):
+  prediction = loaded_model.predict(gen_imgs[i].reshape(1, 128, 128, 3))
+  
 
 # Create a figure with adjusted size
 plt.figure(figsize=(gen_imgs[i].shape[1] / 100, gen_imgs[i].shape[0] / 100), dpi=100)
