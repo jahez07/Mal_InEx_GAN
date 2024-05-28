@@ -318,7 +318,6 @@ train(generator, discriminator, gan_model, dataset, latent_dim, n_epochs = 800)
 #              G E N E R A T I N G  S A M P L E S
 
 # Loading the generator 
-generator = load_model('/GAN/Models/cifar[EG_Gatak]_generator_epochs.h5')
 with open('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/rf_model.pkl', 'rb') as file:
     generator = pickle.load(file)
 
@@ -326,6 +325,7 @@ with open('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/rf_model.pkl', 
 noise = np.random.normal(0, 1, (1 * 1, 100))
 gen_imgs = generator.predict(noise)
 
+# Selecting generated images
 for i in range(len(gen_imgs)):
   prediction = loaded_model.predict(gen_imgs[i].reshape(1, 128, 128, 3))
   
