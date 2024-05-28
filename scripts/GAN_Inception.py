@@ -2,10 +2,10 @@ import os
 import glob
 import pickle
 import numpy as np
+from PIL import Image
 from numpy import ones, zeros
 import matplotlib.pyplot as plt
 from keras.optimizers import Adam
-from keras.models import load_model
 from keras.models import Sequential
 from numpy.random import randint, randn
 from tensorflow.keras.preprocessing import image
@@ -332,7 +332,7 @@ for i in range(len(gen_imgs)):
       # Convert numpy array to image
       img = Image.fromarray((gen_imgs[i] * 255).astype(np.uint8))
       # Save the image
-      img.save(f'adaload_image_{i}.png')
+      img.save(f'Gen_adaload_{i}.png')
   
 
 # Create a figure with adjusted size
