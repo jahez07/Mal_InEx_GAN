@@ -172,17 +172,6 @@ def generate_latent_points(latent_dim, n_samples):
 	x_input = x_input.reshape(n_samples, latent_dim)
 	return x_input
 
-# Generate n_samples number of latent vectors as input for the generator
-
-def generate_latent_points(latent_dim, n_samples):
-
-  # generate points in the latent space
-	x_input = randn(latent_dim * n_samples)
-
-  # reshape into a batch of inputs for the network
-	x_input = x_input.reshape(n_samples, latent_dim)
-	return x_input
-
 # Use the generator to generate n fake examples, with class labels
 # Supply the generator, latent_dim and number of samples as input.
 # Use the above latent point generator to generate latent points.
