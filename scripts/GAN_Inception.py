@@ -2,6 +2,7 @@ import os
 import glob
 import numpy as np
 from numpy import ones, zeros
+import matplotlib.pyplot as plt
 from keras.optimizers import Adam
 from keras.models import load_model
 from keras.models import Sequential
