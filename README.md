@@ -34,3 +34,5 @@ Performance Metrics
 <br/>
 <img src="results/result.png" alt="ClassificationReport" width="512">
 <br/>
+
+## GE N E R A T I N G &ensp; S A M P L E S
