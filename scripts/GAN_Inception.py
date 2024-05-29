@@ -325,6 +325,13 @@ with open('/content/drive/MyDrive/Jahez_Vinod_2023/MalHub/Models/rf_model.pkl', 
 noise = np.random.normal(0, 1, (1 * 1, 100))
 gen_imgs = generator.predict(noise)
 
+image_shape = (128,128, 3)
+# Assigning the base model
+base_model = InceptionV3(weights='imagenet', input_shape=image_shape, include_top=False, pooling='avg')
+# Creating a feature extractor using the base model
+feature_extractor = base_model.predict(gen_imgs)
+features = feature_extractor.reshape(feature_extractor.shape[0], -1)
+
 # Selecting generated images
 for i in range(len(gen_imgs)):
   prediction = loaded_model.predict(gen_imgs[i].reshape(1, 128, 128, 3))
