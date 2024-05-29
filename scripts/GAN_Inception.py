@@ -332,6 +332,8 @@ base_model = InceptionV3(weights='imagenet', input_shape=image_shape, include_to
 feature_extractor = base_model.predict(gen_imgs)
 features = feature_extractor.reshape(feature_extractor.shape[0], -1)
 
+#              S A V I N G  G E N E R A T E D  S A M P L E S
+
 # Selecting generated images
 for i in range(len(gen_imgs)):
   prediction = loaded_model.predict(features[i].reshape(1, 128, 128, 3))
